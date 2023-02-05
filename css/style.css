@@ -5,15 +5,47 @@
 }
 
 .container{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    display: grid; 
+
 }
 
-.item{
-    background-color: lightblue;
-    border: 3px solid blue;
-   
 
+.header {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+.timer{
+    text-align: end;
+}
+
+#qaArea{
+    display: grid;
+    place-items: center;
+}
+
+.QnA {
+    display: grid;
+    place-items: left;
+    width: max-content;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+
+}
+
+.options {
+    display: grid;
+    width: max-content;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* grid-template-columns: 1fr; */
+}
+
+.btn{
+    background-color: rgb(15, 8, 145);
+    color:white;
+    border-radius: 5px;
+    padding: 0.1rem 0.5rem ;
+    text-align: left;
 }
