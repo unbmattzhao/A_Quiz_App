@@ -4,26 +4,68 @@
     box-sizing: border-box;
 }
 
-.container{
-    display: grid; 
-
+:root{ 
+    --buttonBackground: rgb(15, 8, 145); 
+    --mouseOn: rgb(100, 96, 185)
 }
 
+/* use grid to display the whole page for easier styling */
+.container{
+    display: grid; 
+    place-items: center;
+    text-align: left;
+}
 
+/* one column to show the two elements */
 .header {
     display: grid;
+    width: 100%;
     grid-template-columns: 50% 1fr;
     padding: 0.5rem 1rem 0.5rem 0.5rem;
 }
 
-.timer{
+/* timer to go to the right end of the page */
+.timer {
     text-align: end;
 }
 
+.firstPage{
+    display: grid;
+    place-items: center;
+    margin: 30px;
+}
+
+.title, .description {
+    text-align: center;
+    padding: 30px;
+}
+
+#startBtn {
+    background-color: var(--buttonBackground);
+    color: white;
+    border-radius: 5px;
+    padding: 0.1rem;
+    width: max-content;
+}
+
+#startBtn:hover{
+    cursor: pointer;
+    background-color: var(--mouseOn);
+}
+
+/* styling a little bit */
+.question {
+    margin-top: 3rem;
+    padding: 0.1rem ;
+}
+
+/* still grid and center it*/
 #qaArea{
     display: grid;
     place-items: center;
 }
+
+/* style the questions and answers and the results */
 
 .QnA {
     display: grid;
@@ -34,18 +76,91 @@
 
 }
 
-.options {
+/*  make the question itself to be responsive and properly sized */
+.question{
     display: grid;
-    width: max-content;
-    flex-direction: column;
-    gap: 0.5rem;
-    /* grid-template-columns: 1fr; */
+    width: 70vw;
+    min-width: 400px;
 }
 
+/* style the answer/option area */
+.options {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+}
+
+/* style the option buttons */
 .btn{
-    background-color: rgb(15, 8, 145);
+    background-color: var(--buttonBackground);
     color:white;
+    width: max-content;
     border-radius: 5px;
     padding: 0.1rem 0.5rem ;
     text-align: left;
+}
+
+/* make the button responsive to mouse action  */
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--mouseOn);
+}
+
+/* change color when an answer is selected */
+.btn:active{
+    background-color: rgb(130, 126, 222);
+}
+
+#scoreSubmissionArea {
+    display: grid;
+    gap: 1rem;
+}
+
+.form #submit{
+    background-color: var(--buttonBackground);
+    color:white;
+    border-radius: 5px;
+}
+
+/* add hover effect */
+.form #submit:hover {
+    cursor: pointer;
+    background-color: var(--mouseOn)
+}
+
+/* the result feedback, style it and make it same width as the score submission area */
+.goBackArea {
+    margin-top: 2rem;
+    display: grid;
+    justify-items: left;
+   gap: 1rem;
+   width: 430px;
+   background-color: aquamarine;
+}
+
+/* style the two buttons and remove any link decorations */
+.goBack, .clearScore{
+    background-color: var(--buttonBackground);
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    text-decoration: none;
+    }
+
+     /* TODO: find out why below codes have been taken over by default  */
+.goBack .a{
+    text-decoration: none;
+}
+
+
+/* add hover effect to the buttons */
+.goBack:hover, .clearScore:hover {
+    cursor: pointer;
+    background-color: var(--mouseOn)
+}
+
+.goBack a:hover, .clearScore a:hover {
+    cursor: pointer;
+    background-color: var(--mouseOn);
+    text-decaration:none;
 }
