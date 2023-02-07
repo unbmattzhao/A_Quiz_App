@@ -62,7 +62,7 @@
 /* still grid and center it*/
 #qaArea{
     display: grid;
-    place-items: center;
+    place-items: left;
 }
 
 /* style the questions and answers and the results */
@@ -72,6 +72,7 @@
     place-items: left;
     width: max-content;
     gap: 0.5rem;
+    margin-bottom: 1rem;
     grid-template-columns: 1fr;
 
 }
@@ -91,7 +92,7 @@
 }
 
 /* style the option buttons */
-.btn{
+.answerBtn{
     background-color: var(--buttonBackground);
     color:white;
     width: max-content;
@@ -101,13 +102,13 @@
 }
 
 /* make the button responsive to mouse action  */
-.btn:hover {
+.answerBtn:hover {
     cursor: pointer;
     background-color: var(--mouseOn);
 }
 
 /* change color when an answer is selected */
-.btn:active{
+.answerBtn:active{
     background-color: rgb(130, 126, 222);
 }
 

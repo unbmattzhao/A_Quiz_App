@@ -14,7 +14,7 @@
 
         <div class="header">
             <p class="viewScore">View Highscores</p>
-            <p class="timer">timer</p>
+            <p class="timer" id="timer">Time: 0</p>
         </div>
         <div class="firstPage">
             <h1 class="title">Coding Quiz Challenge</h1>
@@ -27,17 +27,23 @@
             <div class="QnA">
                 <h3 class="question">this is the question area Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, accusantium Lorem ipsum dolor sit amet consectetur adipisicing elit. In tempore praesentium autem maxime deleniti aliquam repudiandae necessitatibus, odio nesciunt at!.</h3>
                 <div class="options">
-                    <button class="btn" id="btn1">1. Lorem ipsum dolor sit amet.lorem<span id='choice1'></span></button>
-                    <button class="btn" id="btn2">2. Lorem ipsum dolor sit amet.loremlorerrererm2<span id='choice2'></span></button>
-                    <button class="btn" id="btn3">3.Lorem ipsum dolor met.lorem <span id='choice3'></span></button>
-                    <button class="btn" id="btn4">4. Lorem imet.lorem<span id='choice4'></span></button>
-                </div>
-                <div id="qaResult">
-                    <hr id="hr">
-                    <p id="correct">Correct!</p>
-                    <p id="incorrect">Incorrect!</p>
-                </div>       
-            </div>              
+                    <!-- <button class="answerBtn" id="optionBtn0" onclick="calcScore(this)><span id='choice0'></span></button>
+                    <button class="answerBtn" id="optionBtn1" onclick="calcScore(this)><span id='choice1'></span></button>
+                    <button class="answerBtn" id="optionBtn2" onclick="calcScore(this)><span id='choice2'></span></button>
+                    <button class="answerBtn" id="optionBtn3" onclick="calcScore(this)><span id='choice3'></span></button> -->
+
+                    <button class="answerBtn" id="optionBtn0" onclick="calcScore(this)"></button>
+                    <button class='answerBtn' id='optionBtn1' onclick="calcScore(this)"></button>
+                    <button class='answerBtn' id="optionBtn2" onclick="calcScore(this)"></button>
+                    <button class='answerBtn' id="optionBtn3" onclick="calcScore(this)"></button>
+
+                </div>                
+            </div>  
+            <div id="qaResult">
+                <hr class="hr">
+                <p class="correct">Correct!</p>
+                <p class="incorrect">Incorrect!</p>
+            </div>                   
         </div>
        
         <div id="scoreSubmissionArea">
