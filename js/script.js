@@ -3,7 +3,7 @@
 const questionArray = 
 [
     {
-        Question: "1Commonly used data types DO NOT include:",
+        Question: "Commonly used data types DO NOT include:",
         option: [
                 "1. strings",    
                 "2. booleans",
@@ -14,7 +14,7 @@ const questionArray =
     },
 
     {
-    Question: "2The condition in an if / else statement is enclosed within _____",
+    Question: "The condition in an if / else statement is enclosed within _____",
     option: [
             "1. quotes",    
             "2. curly brackets",
@@ -25,7 +25,7 @@ const questionArray =
     },
 
     {
-        Question: "3Arrays in JavaScript can be used to store___.",
+        Question: "Arrays in JavaScript can be used to store___.",
         option: [
                 "1. numbers and strings",    
                 "2. other Arrays",
@@ -36,7 +36,7 @@ const questionArray =
     },
 
     {
-        Question: "4String values must be enclosed within ____ when being assigned to variables.",
+        Question: "String values must be enclosed within ____ when being assigned to variables.",
         option: [
                 "1. commas",    
                 "2. curly brackets",
@@ -47,7 +47,7 @@ const questionArray =
     },
     
     {
-        Question: "5A very useful tool used during development and debugging for printing content to the debugger is:",
+        Question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         option: [
                 "1. JavaScript",    
                 "2. terminal / bash",
