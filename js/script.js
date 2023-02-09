@@ -3,7 +3,7 @@
 const questionArray = 
 [
     {
-        Question: "Commonly used data types DO NOT include:",
+        Question: "1Commonly used data types DO NOT include:",
         option: [
                 "1. strings",    
                 "2. booleans",
@@ -14,7 +14,7 @@ const questionArray =
     },
 
     {
-    Question: "The condition in an if / else statement is enclosed within _____",
+    Question: "2The condition in an if / else statement is enclosed within _____",
     option: [
             "1. quotes",    
             "2. curly brackets",
@@ -25,7 +25,7 @@ const questionArray =
     },
 
     {
-        Question: "Arrays in JavaScript can be used to store___.",
+        Question: "3Arrays in JavaScript can be used to store___.",
         option: [
                 "1. numbers and strings",    
                 "2. other Arrays",
@@ -36,7 +36,7 @@ const questionArray =
     },
 
     {
-        Question: "String values must be enclosed within ____ when being assigned to variables.",
+        Question: "4String values must be enclosed within ____ when being assigned to variables.",
         option: [
                 "1. commas",    
                 "2. curly brackets",
@@ -47,7 +47,7 @@ const questionArray =
     },
     
     {
-        Question: " A very useful tool used during development and debugging for printing content to the debugger is:",
+        Question: "5A very useful tool used during development and debugging for printing content to the debugger is:",
         option: [
                 "1. JavaScript",    
                 "2. terminal / bash",
@@ -56,7 +56,7 @@ const questionArray =
                 ],
         answer:   "4. console.log"
     }
-]
+];
 
 // get all the related elements
 var viewScore = document.querySelector('.viewScore');
@@ -70,6 +70,7 @@ var correctEl = document.querySelector('.correct');
 var incorrectEl = document.querySelector('.incorrect')
 var questionEl = document.querySelector('.question');
 var answerBtnEl = document.querySelector('.answerBtn');
+var optionEl = document.querySelector('.options');  // ! 
 var scoreSubmissionArea = document.querySelector('#scoreSubmissionArea');
 var goBackArea = document.querySelector('.goBackArea');
 var optionBtn0 = document.querySelector('#optionBtn0');
@@ -95,64 +96,54 @@ startBtn.addEventListener('click', () => {
     correctEl.setAttribute('style', 'display: none');
     incorrectEl.setAttribute('style', 'display: none');
     timer.innerText = 'Time: 75';
-
-    setTime();
-
 }
 );
 
-function showNextQuestion() {  
-    if(i<questionArray.length) {
-        i++;
-        showQuestion();
-    }
-    else{
-        ""
-    };
-}
-function showQuestion() {
-    for(var i=0; i<questionArray.length; i++){
+optionEl.addEventListener('click', showNextQuestion);
+
+function clearQa() {
+    qaResultEL.setAttribute('style', 'display: none')
+};
+
+function showNextQuestion(event) {  
+    var element = event.target;
+    if (element.matches(".answerBtn")) {   
+        if(element.textContent===questionArray[i].answer)
+        {score= score+1;
+        hrEl.removeAttribute('style');
+        correctEl.removeAttribute('style')
+        }
+        else{
+            hrEl.removeAttribute('style');
+            incorrectEl.removeAttribute('style')
+        }
+            console.log(score);
+           
+        if(i<questionArray.length-1) {
+            i++;      
+            setTimeout(showQuestion, 1000); 
+            setTimeout(clearQa,1000)
+        }
+        else{
+            goBackArea.removeAttribute('style');
+            
+        };
+    };   
+    //
+};
+
+function showQuestion() {   
     questionEl.innerText = questionArray[i].Question;
     optionBtn0.innerText = questionArray[i].option[0];
     optionBtn1.innerText = questionArray[i].option[1];
     optionBtn2.innerText = questionArray[i].option[2];
-    optionBtn3.innerText = questionArray[i].option[3];
-}  
+    optionBtn3.innerText = questionArray[i].option[3];    
+    
 };
 
 showQuestion();
 
-answerBtnEl.addEventListener('click', showNextQuestion);
 
-function backToQuiz(){
-    location.reload();
-}
-
-function calcScore(e){
-    if(e.innerHTML===questionArray[i].answer && score<questionArray.length)
-    {score= score+1}
-    else{}
-    setTimeout(showNextQuestion(),300);
-}
-
-
-
-
-// i ++;
-
-// showNextQuestion();
-
-
-// question.innerText = (
-//     function question() {
-//         for (let i = 0; i < questionArray.length; i++){
-//             questionArray.question;
-//         }
-// console.log(questionArray.question);
-
-// });
-
-// set timer 75' 
 
 var timeLeft = 75;
 
@@ -170,4 +161,12 @@ function setTime() {
     }
 
   }, 1000);
-}
+};
+
+
+
+// function backToQuiz(){
+//     location.reload();
+// };
+
+// 
