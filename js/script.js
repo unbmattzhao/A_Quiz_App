@@ -174,7 +174,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       qaArea.setAttribute('style', 'display: none');
-      
+      score = 0;  //!!f
       scoreSubmissionArea.removeAttribute('style');
       timer.textContent = "Time: 0";
       // return result
