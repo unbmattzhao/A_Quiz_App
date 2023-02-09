@@ -1,10 +1,27 @@
+# Decsription 
+##### An App to take a small quiz with four options
+#####  users are supposed to finish all questions within a limited time, for this one, 75s. If not finished within this time limitation, the user will get a 0.
+
+#### Users will be fined 15s for each wrong answer.
+
+#### Users are allowed to check their previous scores
+
+
+# Links 
+
+The code: https://github.com/unbmattzhao/A_Quiz_App
+
+The Page: https://unbmattzhao.github.io/A_Quiz_App/ 
+
+
+
 # Screenshots
 
-![The App screenshots](./imgs/01screenshot.png "Password Generator01")
-![The App screenshots](./imgs/01screenshot.png "Password Generator01")
-![The App screenshots](./imgs/01screenshot.png "Password Generator01")
-![The App screenshots](./imgs/01screenshot.png "Password Generator01")
-![The App screenshots](./imgs/01screenshot.png "Password Generator01")
+![The App screenshots](./img/01.png "Password Generator01")
+![The App screenshots](./img/02.png "Password Generator01")
+![The App screenshots](./img/03.png "Password Generator01")
+![The App screenshots](./img/04.png "Password Generator01")
+
 
 
 
