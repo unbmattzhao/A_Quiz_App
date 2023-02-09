@@ -117,6 +117,16 @@
     gap: 1rem;
 }
 
+
+#HighScore {
+    display: flex;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    background-color: rgb(198, 190, 236);
+    width: 400px;
+}
+
+
 .form #submit{
     background-color: var(--buttonBackground);
     color:white;
@@ -136,7 +146,7 @@
     justify-items: left;
    gap: 1rem;
    width: 430px;
-   background-color: aquamarine;
+   /* background-color: aquamarine; */
 }
 
 /* style the two buttons and remove any link decorations */

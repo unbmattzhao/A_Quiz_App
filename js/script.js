@@ -72,13 +72,21 @@ var questionEl = document.querySelector('.question');
 var answerBtnEl = document.querySelector('.answerBtn');
 var optionEl = document.querySelector('.options');  // ! 
 var scoreSubmissionArea = document.querySelector('#scoreSubmissionArea');
+var scoreNumberEl = document.querySelector('.scoreNumber');
 var goBackArea = document.querySelector('.goBackArea');
 var optionBtn0 = document.querySelector('#optionBtn0');
 var optionBtn1 = document.querySelector('#optionBtn1');
 var optionBtn2 = document.querySelector('#optionBtn2');
 var optionBtn3 = document.querySelector('#optionBtn3');
+var initialsEl = document.querySelector('#initials');
+var HighScoreEl = document.querySelector('#HighScore');
+var submitEl = document.querySelector('#submit');
+var clearScoreEl = document.querySelector('.clearScore');
 var i = 0;
 var score = 0;
+var highScoresInput = [];
+
+
 
 
 
@@ -96,40 +104,52 @@ startBtn.addEventListener('click', () => {
     correctEl.setAttribute('style', 'display: none');
     incorrectEl.setAttribute('style', 'display: none');
     timer.innerText = 'Time: 75';
+    setTime() 
 }
 );
 
-optionEl.addEventListener('click', showNextQuestion);
 
-function clearQa() {
+function clearQaResult() {
     qaResultEL.setAttribute('style', 'display: none')
 };
 
+optionEl.addEventListener('click', showNextQuestion);
+
 function showNextQuestion(event) {  
-    var element = event.target;
+    // ! One click only, this is important! 
+    // TODO: Find a solution to accept one click only for one question
+    // ! Can be solved if set the options to be radios
+    // TODO: add sound effect for right and wrong answers
+    var element = event.target; 
     if (element.matches(".answerBtn")) {   
         if(element.textContent===questionArray[i].answer)
         {score= score+1;
         hrEl.removeAttribute('style');
-        correctEl.removeAttribute('style')
+        correctEl.removeAttribute('style');
+       
         }
         else{
+            timeLeft = timeLeft - 15;
             hrEl.removeAttribute('style');
-            incorrectEl.removeAttribute('style')
+            incorrectEl.removeAttribute('style');
+           
         }
             console.log(score);
            
         if(i<questionArray.length-1) {
             i++;      
-            setTimeout(showQuestion, 1000); 
-            setTimeout(clearQa,1000)
+            setTimeout(showQuestion, 500); 
         }
         else{
-            goBackArea.removeAttribute('style');
-            
+            qaArea.setAttribute('style', 'display: none');
+            scoreSubmissionArea.removeAttribute('style');
+            scoreNumberEl.innerText = score;                  
         };
+        setTimeout(clearQaResult, 500)
+        
     };   
-    //
+    
+   
 };
 
 function showQuestion() {   
@@ -138,11 +158,8 @@ function showQuestion() {
     optionBtn1.innerText = questionArray[i].option[1];
     optionBtn2.innerText = questionArray[i].option[2];
     optionBtn3.innerText = questionArray[i].option[3];    
-    
 };
-
 showQuestion();
-
 
 
 var timeLeft = 75;
@@ -150,18 +167,59 @@ var timeLeft = 75;
 function setTime() {
   // Sets interval in variable
   var timerInterval = setInterval(function() {
-    timeLeft--;
+    timeLeft--;   
     timer.textContent = "Time: " + timeLeft;
-
-    if(timeLeft === 0) {
+    
+    if(timeLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
+      qaArea.setAttribute('style', 'display: none');
+      
+      scoreSubmissionArea.removeAttribute('style');
+      timer.textContent = "Time: 0";
       // return result
-      result();
     }
-
-  }, 1000);
+  },
+  1000);
 };
+
+
+submitEl.addEventListener('click', submitScoreData);
+
+// use JSON to store and push more  
+function submitScoreData(event) {
+    event.preventDefault();
+    let scoreInput = {
+        initials: initialsEl.value,
+        highScore: score
+    }
+    highScoresInput = JSON.parse(localStorage.getItem('scoreInput') || '[]');
+    highScoresInput.push(scoreInput);
+
+    localStorage.setItem('scoreInput', JSON.stringify(highScoresInput));
+
+//  console.log(highScoresInput);
+console.log(localStorage);
+       
+    scoreSubmissionArea.setAttribute('style', 'display: none');
+    goBackArea.removeAttribute('style');
+}
+
+    // let initials = initialsEl.value;
+    // localStorage.setItem('Initials', initials)
+    // localStorage.setItem('highScore', score)
+  
+    // HighScoreEl.innerText ="1. " + initialsEl.value +" - "+ score
+    // };
+
+clearScoreEl.addEventListener('click', (e)=>{
+    e.preventDefault();
+    localStorage.clear();
+    HighScoreEl.innerText = "Score cleared!"
+})
+
+
+HighScoreEl.innerText ="1. " + initialsEl.value +" - "+ score
 
 
 
