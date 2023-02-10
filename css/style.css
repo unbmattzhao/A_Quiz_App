@@ -125,6 +125,7 @@
 
 #HighScore {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 1rem;
     font-size: 0.9rem;
     background-color: rgb(198, 190, 236);
@@ -151,7 +152,7 @@
     justify-items: left;
     /* width: fit-content; */
    gap: 1rem;
-   width: 430px;
+   min-width: 430px;
    /* background-color: aquamarine; */
 }
 .btnGoBack {
