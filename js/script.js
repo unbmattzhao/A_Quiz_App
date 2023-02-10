@@ -90,6 +90,7 @@ var highScoresInput = [];
 var timerInterval;
 
 
+
 // Show first page only when loading this app, hide other pages.
 qaArea.setAttribute('style', 'display: none');
 scoreSubmissionArea.setAttribute('style', 'display: none');
@@ -108,6 +109,15 @@ startBtn.addEventListener('click', () => {
 }
 );
 
+function playCorrect() {
+    let audio = new Audio("./audio/correct.mp3");
+    audio.play()
+};
+
+function playIncorrect() {
+    let audio = new Audio("./audio/incorrect.mp3");
+    audio.play()
+};
 
 
 optionEl.addEventListener('click', showNextQuestion);
@@ -120,12 +130,13 @@ function showNextQuestion(event) {
         {score= score+1;
         hrEl.removeAttribute('style');
         correctEl.removeAttribute('style');
-       
+        playCorrect()
         }
         else{
             timeLeft = timeLeft - 15;
             hrEl.removeAttribute('style');
             incorrectEl.removeAttribute('style');
+            playIncorrect()
         }
             console.log(score);
            
