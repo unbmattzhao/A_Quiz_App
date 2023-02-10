@@ -85,9 +85,7 @@ var clearScoreEl = document.querySelector('.clearScore');
 var i = 0;
 var score = 0;
 var highScoresInput = [];
-
-
-
+var timerInterval;
 
 
 // Show first page only when loading this app, hide other pages.
@@ -109,17 +107,11 @@ startBtn.addEventListener('click', () => {
 );
 
 
-function clearQaResult() {
-    qaResultEL.setAttribute('style', 'display: none')
-};
 
 optionEl.addEventListener('click', showNextQuestion);
 
 function showNextQuestion(event) {  
-    // ! One click only, this is important! 
-    // TODO: Find a solution to accept one click only for one question
-    // ! Can be solved if set the options to be radios
-    // TODO: add sound effect for right and wrong answers
+   
     var element = event.target; 
     if (element.matches(".answerBtn")) {   
         if(element.textContent===questionArray[i].answer)
@@ -137,16 +129,23 @@ function showNextQuestion(event) {
            
         if(i<questionArray.length-1) {
             i++;      
-            setTimeout(showQuestion, 500); 
+            showQuestion();
         }
         else{
             qaArea.setAttribute('style', 'display: none');
             scoreSubmissionArea.removeAttribute('style');
-            scoreNumberEl.innerText = score;                  
+            scoreNumberEl.innerText = score;  
+            clearInterval(timerInterval);                
         };
         setTimeout(clearQaResult, 500)
         
     };   
+    function clearQaResult() {
+        
+        hrEl.setAttribute('style', 'display: none')
+        correctEl.setAttribute('style', 'display: none')
+        incorrectEl.setAttribute('style', 'display: none')
+    };
     
    
 };
@@ -165,7 +164,7 @@ var timeLeft = 75;
 
 function setTime() {
   // Sets interval in variable
-  var timerInterval = setInterval(function() {
+   timerInterval = setInterval(function() {
     timeLeft--;   
     timer.textContent = "Time: " + timeLeft;
     
@@ -173,7 +172,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       qaArea.setAttribute('style', 'display: none');
-      score = 0;  //!! not working!
+      scoreNumberEl.innerText = '0';  
       scoreSubmissionArea.removeAttribute('style');
       timer.textContent = "Time: 0";
       // return result
@@ -183,7 +182,7 @@ function setTime() {
 };
 
 
-submitEl.addEventListener('click', submitScoreData);
+submitEl.addEventListener('submit', submitScoreData);
 
 // use JSON to store and push more  
 function submitScoreData(event) {
@@ -199,7 +198,9 @@ function submitScoreData(event) {
 
 //  console.log(highScoresInput);
 console.log(localStorage);
-       
+    
+    HighScoreEl.textContent = '1. ' + initialsEl.value + ' - ' + score;
+
     scoreSubmissionArea.setAttribute('style', 'display: none');
     goBackArea.removeAttribute('style');
 }
@@ -217,13 +218,15 @@ clearScoreEl.addEventListener('click', (e)=>{
     HighScoreEl.innerText = "Score cleared!"
 })
 
-
-HighScoreEl.innerText ="1. " + initialsEl.value +" - "+ score;
-
-
-
-// function backToQuiz(){
-//     location.reload();
-// };
-
-// 
+function readHighScores (){
+    highScoresInput = JSON.parse(localStorage.getItem('scoreInput') || '[]');
+    
+    for (let i = 0; i < highScoresInput.length; i++){
+       let highScore =  highScoresInput[i];
+       let highScoreRow = document.createElement('p');
+       var $ = i+1;
+       highScoreRow.textContent = $ + '. ' + highScore.initials + '-' + highScore.highScore + "  ";
+       HighScoreEl.appendChild(highScoreRow); 
+    }
+}
+readHighScores();
