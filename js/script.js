@@ -59,7 +59,9 @@ const questionArray =
 ];
 
 // get all the related elements
-var viewScore = document.querySelector('.viewScore');
+var viewScoreEl = document.querySelector('.viewScore');
+var containerEl = document.querySelector('.container');
+var headerEl = document.querySelector('.header');
 var timer = document.querySelector('#timer');
 var firstPage = document.querySelector('.firstPage');
 var startBtn = document.querySelector('#startBtn');
@@ -223,10 +225,21 @@ function readHighScores (){
     
     for (let i = 0; i < highScoresInput.length; i++){
        let highScore =  highScoresInput[i];
-       let highScoreRow = document.createElement('p');
+       let highScoreRow = document.createElement('li');
        var $ = i+1;
        highScoreRow.textContent = $ + '. ' + highScore.initials + '-' + highScore.highScore + "  ";
        HighScoreEl.appendChild(highScoreRow); 
+       
     }
+    firstPage.setAttribute('style', 'display: none');
+    qaArea.setAttribute('style', 'display: none');
+    hrEl.setAttribute('style', 'display: none');
+    correctEl.setAttribute('style', 'display: none');
+    incorrectEl.setAttribute('style', 'display: none');
+    scoreSubmissionArea.setAttribute('style', 'display: none');
+    goBackArea.setAttribute('style', 'display: none');
+    goBackArea.removeAttribute('style');
 }
-readHighScores();
+
+
+viewScoreEl.addEventListener('click', readHighScores);

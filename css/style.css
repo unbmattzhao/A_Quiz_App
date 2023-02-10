@@ -14,8 +14,13 @@
     display: grid; 
     place-items: center;
     text-align: left;
+    
 }
-
+#showScoreHistory {
+    border: 0;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+}
 /* one column to show the two elements */
 .header {
     display: grid;
