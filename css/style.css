@@ -124,9 +124,10 @@
 
 
 #HighScore {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     margin-top: 1rem;
+    padding-left: 2rem;
     font-size: 0.9rem;
     background-color: rgb(198, 190, 236);
     width: 400px;

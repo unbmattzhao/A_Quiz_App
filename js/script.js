@@ -225,9 +225,9 @@ function readHighScores (){
     
     for (let i = 0; i < highScoresInput.length; i++){
        let highScore =  highScoresInput[i];
-       let highScoreRow = document.createElement("div");
-       highScoreRow.setAttribute('style', 'display:flex');
-       highScoreRow.textContent = highScore.initials + ' - ' + highScore.highScore + "      .";
+       let highScoreRow = document.createElement("li");
+    
+       highScoreRow.textContent = highScore.initials + ' - ' + highScore.highScore;
     //    HighScoreEl.
        HighScoreEl.appendChild(highScoreRow); 
        
