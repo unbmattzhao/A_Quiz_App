@@ -140,13 +140,22 @@
 }
 
 /* the result feedback, style it and make it same width as the score submission area */
-.goBackArea {
+.GoBackArea {
     margin-top: 2rem;
     display: grid;
     justify-items: left;
+    /* width: fit-content; */
    gap: 1rem;
    width: 430px;
    /* background-color: aquamarine; */
+}
+.btnGoBack {
+    margin-top: 1rem;
+}
+
+.goBack a {
+    color: white;
+    text-decoration: none;
 }
 
 /* style the two buttons and remove any link decorations */
@@ -169,9 +178,4 @@
     cursor: pointer;
     background-color: var(--mouseOn)
 }
-
-.goBack a:hover, .clearScore a:hover {
-    cursor: pointer;
-    background-color: var(--mouseOn);
-    text-decaration:none;
-}
+/* 

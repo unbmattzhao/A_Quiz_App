@@ -132,7 +132,6 @@ function showNextQuestion(event) {
             timeLeft = timeLeft - 15;
             hrEl.removeAttribute('style');
             incorrectEl.removeAttribute('style');
-           
         }
             console.log(score);
            
@@ -174,7 +173,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       qaArea.setAttribute('style', 'display: none');
-      score = 0;  //!! 
+      score = 0;  //!! not working!
       scoreSubmissionArea.removeAttribute('style');
       timer.textContent = "Time: 0";
       // return result
@@ -219,7 +218,7 @@ clearScoreEl.addEventListener('click', (e)=>{
 })
 
 
-HighScoreEl.innerText ="1. " + initialsEl.value +" - "+ score
+HighScoreEl.innerText ="1. " + initialsEl.value +" - "+ score;
 
 
 
