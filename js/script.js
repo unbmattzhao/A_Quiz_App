@@ -222,7 +222,7 @@ clearScoreEl.addEventListener('click', (e)=>{
 
 function readHighScores (){
     highScoresInput = JSON.parse(localStorage.getItem('scoreInput') || '[]');
-    
+    HighScoreEl.innerHTML = "";
     for (let i = 0; i < highScoresInput.length; i++){
        let highScore =  highScoresInput[i];
        let highScoreRow = document.createElement("li");
